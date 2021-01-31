@@ -1,9 +1,15 @@
 package com.book.store;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 /**
+ * The BookStore application is an online bookstore built
+ * with React, Spring Boot, and PostgreSQL.
+ *
  * @author Nicholas Ngare
+ * @version 1.0.0
  */
 
 // TODO: determine if this entity needs to be serializable
@@ -15,21 +21,29 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="author_id")
-    private long id;
+    private Long id;
 
-    @Column(name="first_name")
+    @Column(
+            name="first_name",
+            nullable = false
+    )
     private String firstName;
 
-    @Column(name="middle_name")
+    @Column(
+            name="middle_name",
+            nullable = false
+    )
     private String middleName;
 
-    @Column(name="last_name")
+    @Column(
+            name="last_name",
+            nullable = false
+    )
     private String lastName;
 
     protected Author() {}
 
-    public Author(long id, String firstName, String middleName, String lastName) {
-        this.id = id;
+    public Author(String firstName, String middleName, String lastName) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -37,22 +51,43 @@ public class Author {
 
     @Override
     public String toString() {
-        return String.format("Author[id=%d, firstName='%s', middleName='%s', lastName='%s']", id, firstName, middleName, lastName);
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getMiddleName() {
         return middleName;
     }
 
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
     public String getLastName() {
         return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

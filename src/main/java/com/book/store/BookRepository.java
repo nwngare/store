@@ -1,6 +1,5 @@
 package com.book.store;
 
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -12,9 +11,9 @@ import java.util.List;
  * @author Nicholas Ngare
  * @version 1.0.0
  */
-public interface AuthorRepository extends JpaRepository<Author, Long> {
+public interface BookRepository extends JpaRepository<Book, Long> {
 
-    List<Author> findByFirstName(String firstName);
+    List<Book> findByTitleLike(String title);
 
-    Author findById(long id);
+    Book findById(long id);
 }

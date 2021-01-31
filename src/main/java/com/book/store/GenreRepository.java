@@ -1,20 +1,19 @@
 package com.book.store;
 
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 /**
  * The BookStore application is an online bookstore built
- * with React, Spring Boot, and PostgreSQL.
+ * with React, Spring Boot, and PostgreSQL
  *
  * @author Nicholas Ngare
  * @version 1.0.0
  */
-public interface AuthorRepository extends JpaRepository<Author, Long> {
+public interface GenreRepository extends JpaRepository<Genre, Long> {
 
-    List<Author> findByFirstName(String firstName);
+    List<Genre> findByGenreLike(String genre);
 
-    Author findById(long id);
+    Genre findById(long id);
 }
