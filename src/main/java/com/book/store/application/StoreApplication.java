@@ -1,11 +1,9 @@
-package com.book.store;
+package com.book.store.application;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 /**
  * The BookStore application is an online bookstore built
@@ -23,6 +21,7 @@ public class StoreApplication {
 		SpringApplication.run(StoreApplication.class, args);
 	}
 
+	/*
 	@Bean
 	public CommandLineRunner demo(BookGenreRepository repository) {
 		return(args) -> {
@@ -104,7 +103,7 @@ public class StoreApplication {
 				log.info(bookAuthor.toString());
 			}
 			log.info("");
-			 */
+
 
 			// fetch all book_genres
 			log.info("BookGenres found with findAll():");
@@ -115,5 +114,6 @@ public class StoreApplication {
 			log.info("");
 		};
 	}
+	*/
 
 }

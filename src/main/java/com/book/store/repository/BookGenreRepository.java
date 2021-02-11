@@ -1,5 +1,7 @@
-package com.book.store;
+package com.book.store.repository;
 
+import com.book.store.entity.BookGenre;
+import com.book.store.entity.BookGenreKey;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

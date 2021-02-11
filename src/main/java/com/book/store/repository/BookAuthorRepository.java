@@ -1,8 +1,8 @@
-package com.book.store;
+package com.book.store.repository;
 
+import com.book.store.entity.BookAuthor;
+import com.book.store.entity.BookAuthorKey;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 /**
  * The BookStore application is an online bookstore built
