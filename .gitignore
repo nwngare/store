@@ -33,4 +33,12 @@ build/
 .vscode/
 
 ### *.properties ###
-/main/resources/
+/src/main/resources/application.properties
+
+### Node ###
+/node/
+/node_modules/
+
+/bin/
+/src/main/resources/static/built/bundle.js
+/src/main/resources/static/built/bundle.js.map
