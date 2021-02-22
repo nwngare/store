@@ -2,12 +2,22 @@
 
 import React from 'react';
 
-export default class NavLink extends React.Component {
-    render() {
+function NavLink(props) {
+    if (props.label === 'Cart') {
         return (
-            <li class="nav-item">
-                <a class="nav-link" href="#">{this.props.label}</a>
+            <li className="nav-item">
+                <a className="nav-link" href="#">
+                    <i className="fas fa-shopping-cart"></i>
+                </a>
             </li>
         );
     }
+
+    return (
+        <li className="nav-item">
+            <a className="nav-link" href="#">{props.label}</a>
+        </li>
+    );
 }
+
+export default NavLink;

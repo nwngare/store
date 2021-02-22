@@ -1,7 +1,8 @@
 package com.book.store.repository;
 
 import com.book.store.entity.Book;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
@@ -12,7 +13,8 @@ import java.util.List;
  * @author Nicholas Ngare
  * @version 1.0.0
  */
-public interface BookRepository extends JpaRepository<Book, Long> {
+@RepositoryRestResource(collectionResourceRel = "books", path = "books")
+public interface BookRepository extends PagingAndSortingRepository<Book, Long> {
 
     List<Book> findByTitleLike(String title);
 

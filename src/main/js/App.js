@@ -2,26 +2,25 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import client from './client';
 import Navigation from './components/Navigation';
-import AuthorList from './components/AuthorList';
+import StoreRoom from './components/StoreRoom';
+import Footer from './components/Footer';
 
 class App extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {authors: []};
-	}
-
-	componentDidMount() {
-		client({method: 'GET', path: '/api/authors'}).done(response => {
-			this.setState({authors: response.entity._embedded.authors});
-		});
 	}
 
 	render() {
 		return (
-			<Navigation brand="Nick's Bookstore" />
+			<div className="App">
+				<Navigation brand="Nick's Bookstore" />
+				<main className="container">
+					<StoreRoom />
+				</main>
+				<Footer />
+			</div>
 		);
 	}
 }
