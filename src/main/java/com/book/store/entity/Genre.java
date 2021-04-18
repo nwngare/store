@@ -1,6 +1,7 @@
 package com.book.store.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * The BookStore application is an online bookstore built
@@ -27,6 +28,9 @@ public class Genre {
             referencedColumnName = "genre_id"
     )
     private Genre parent;
+
+    @ManyToMany(mappedBy = "genres")
+    Set<Book> books;
 
     protected Genre() {}
 

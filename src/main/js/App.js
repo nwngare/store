@@ -1,31 +1,21 @@
-'use strict';
-
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Navigation from './components/Navigation';
-import StoreRoom from './components/StoreRoom';
-import Footer from './components/Footer';
+import { Switch, Route, Link } from 'react-router-dom';
+import Home from './routes/Home';
+import Books from './routes/Books';
 
-class App extends React.Component {
-
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return (
-			<div className="App">
-				<Navigation brand="Nick's Bookstore" />
-				<main className="container">
-					<StoreRoom />
-				</main>
-				<Footer />
-			</div>
-		);
-	}
+function App() {
+	return (
+		<div>
+			<Switch>
+				<Route exact path="/">
+					<Home />
+				</Route>
+				<Route path="/books/:title">
+					<Books />
+				</Route>
+			</Switch>
+		</div>
+	);
 }
 
-ReactDOM.render(
-	<App />,
-	document.getElementById('react')
-)
+export default App;

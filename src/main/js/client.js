@@ -1,3 +1,5 @@
+//TODO: Rewrite client module using Axios for rest calls
+
 'use strict';
 
 const rest = require('rest');

@@ -1,18 +1,11 @@
-'use strict'
-
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
-function Footer(props) {
+function Footer() {
     return (
-        <footer className="main-footer">
-            <div className="container">
-                <div className="row text-center">
-                    <div className="col">
-                        &copy; Nicholas Ngare. All rights reserved.
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <Typography variant="body1">
+            &copy; Nicholas Ngare. All rights reserved.
+        </Typography>
     );
 }
 

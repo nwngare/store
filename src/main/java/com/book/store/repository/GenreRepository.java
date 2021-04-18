@@ -2,6 +2,7 @@ package com.book.store.repository;
 
 import com.book.store.entity.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * @version 1.0.0
  */
 @RepositoryRestResource(collectionResourceRel = "genres", path = "genres")
-public interface GenreRepository extends JpaRepository<Genre, Long> {
+public interface GenreRepository extends PagingAndSortingRepository<Genre, Long> {
 
     List<Genre> findByGenreLike(String genre);
 

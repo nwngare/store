@@ -3,6 +3,7 @@ package com.book.store.entity;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * The BookStore application is an online bookstore built
@@ -40,6 +41,9 @@ public class Author {
             nullable = false
     )
     private String lastName;
+
+    @ManyToMany(mappedBy = "authors")
+    Set<Book> books;
 
     protected Author() {}
 

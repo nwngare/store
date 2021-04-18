@@ -2,6 +2,7 @@ package com.book.store.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 /**
  * The BookStore application is an online bookstore built
@@ -29,6 +30,22 @@ public class Book {
     private String isbn;
 
     private Date publishedDate;
+
+    @ManyToMany
+    @JoinTable(
+            name = "book_authors",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    Set<Author> authors;
+
+    @ManyToMany
+    @JoinTable(
+            name = "book_genres",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    Set<Genre> genres;
 
     @ManyToOne
     @JoinColumn(
