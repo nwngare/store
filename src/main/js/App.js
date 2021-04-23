@@ -5,7 +5,7 @@ import Books from './routes/Books';
 
 function App() {
 	return (
-		<div>
+		<div className="App">
 			<Switch>
 				<Route exact path="/">
 					<Home />
