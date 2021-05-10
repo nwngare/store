@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import makeStyles from '@material-ui/styles/makeStyles';
+import stockImage from '../../resources/static/images/pexels-pixabay-267586.jpg';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -24,9 +24,14 @@ function BookCard(props) {
 
 	return (
 		<Card className={classes.root}>
+			<CardMedia
+				className={classes.media}
+				image={stockImage}
+				title="Stock Image"
+			/>
 			<CardContent>
 				<Typography noWrap variant="h6">
-					<Link to={{pathname: `/books/${props.book.title}`}}>
+					<Link to={{ pathname: `/productdetails/${props.book.title}` }}>
 						{props.book.title}
 					</Link>
 				</Typography>
@@ -35,17 +40,10 @@ function BookCard(props) {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button size="small">Buy Now</Button>
-				<Button size="small">Add to Cart</Button>
+				<Button variant="contained" color="primary" size="small">Add to Cart</Button>
 			</CardActions>
 		</Card>
 	);
 }
-
-/**
- * <Link to={{ pathname: '/book', state: { title: props.book.title}}}>
-		{props.book.title}
-	</Link>
- */
 
 export default BookCard;

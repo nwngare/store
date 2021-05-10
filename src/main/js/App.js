@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import Home from './routes/Home';
-import Books from './routes/Books';
+import ProductDetails from './routes/ProductDetails';
 
 function App() {
 	return (
@@ -10,8 +10,8 @@ function App() {
 				<Route exact path="/">
 					<Home />
 				</Route>
-				<Route path="/books/:title">
-					<Books />
+				<Route path="/productdetails/:title">
+					<ProductDetails />
 				</Route>
 			</Switch>
 		</div>

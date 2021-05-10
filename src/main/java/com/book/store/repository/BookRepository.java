@@ -20,6 +20,6 @@ import java.util.List;
 public interface BookRepository extends PagingAndSortingRepository<Book, Long> {
 
     @RestResource(path = "title", rel = "title")
-    Book findByTitle(@Param("title") String title);
+    BookExcerpt findByTitle(@Param("title") String title);
 
 }
