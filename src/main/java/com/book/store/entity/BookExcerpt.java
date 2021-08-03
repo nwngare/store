@@ -14,6 +14,8 @@ import java.util.Set;
 @Projection(name = "bookExcerpt", types = Book.class)
 public interface BookExcerpt {
 
+    Long getId();
+
     String getTitle();
 
     double getRating();

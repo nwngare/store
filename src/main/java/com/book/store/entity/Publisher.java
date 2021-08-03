@@ -1,6 +1,8 @@
 package com.book.store.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The BookStore application is an online bookstore built
@@ -19,6 +21,13 @@ public class Publisher {
     private Long id;
 
     private String name;
+
+    @OneToMany(
+            mappedBy = "publisher",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+    private List<Book> books = new ArrayList<>();
 
     protected Publisher() {}
 

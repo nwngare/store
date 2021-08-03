@@ -17,6 +17,7 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "genres", path = "genres")
 public interface GenreRepository extends PagingAndSortingRepository<Genre, Long> {
 
+    // Query methods using property expressions
     List<Genre> findByGenreLike(String genre);
 
     Genre findById(long id);

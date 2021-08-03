@@ -89,7 +89,7 @@ function Home() {
     // Create a grid of cards to display product details
     const bookCards = books.map(book =>
         <Grid key={book._links.self.href} item>
-            <BookCard book={book} />
+            <BookCard key={book.id} book={book} />
         </Grid>
     );
 

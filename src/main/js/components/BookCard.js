@@ -1,12 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
 import makeStyles from '@material-ui/styles/makeStyles';
+import { cartItemAdded } from '../features/cart/cartSlice';
+import AddToCart from './AddToCart';
 import stockImage from '../../resources/static/images/pexels-pixabay-267586.jpg';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +23,21 @@ const useStyles = makeStyles((theme) => ({
 function BookCard(props) {
 	const classes = useStyles();
 	const primaryAuthor = props.book.authors[0].firstName + " " + props.book.authors[0].lastName;
+
+	const dispatch = useDispatch();
+
+	const onAddToCartClicked = () => {
+		if (props.book) {
+			dispatch(
+				cartItemAdded({
+					cartItemId: props.book.id,
+					name: props.book.title,
+					price: '10.99',
+					quantity: 1
+				})
+			);
+		}
+	}
 
 	return (
 		<Card className={classes.root}>
@@ -40,7 +57,7 @@ function BookCard(props) {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button variant="contained" color="primary" size="small">Add to Cart</Button>
+				<AddToCart variant="contained" color="primary" size="small" onClick={onAddToCartClicked} />
 			</CardActions>
 		</Card>
 	);

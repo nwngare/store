@@ -18,10 +18,9 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "authors", path = "authors")
 public interface AuthorRepository extends PagingAndSortingRepository<Author, Long> {
 
+    // Query methods using property expressions
     List<Author> findByFirstName(String firstName);
-
     List<Author> findByMiddleName(String middleName);
-
     List<Author> findByLastName(String lastName);
 
     // Example of a Spring Data JPA derived query

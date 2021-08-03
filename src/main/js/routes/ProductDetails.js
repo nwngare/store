@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import makeStyles from '@material-ui/styles/makeStyles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -7,11 +8,12 @@ import Container from '@material-ui/core/Container';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import Navigation from '../components/Navigation';
-import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Footer from '../components/Footer';
+import AddToCart from '../components/AddToCart';
+import { cartItemAdded, cartItemRemoved } from '../features/cart/cartSlice';
 import stockImage from '../../resources/static/images/pexels-pixabay-267586.jpg';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,6 +52,21 @@ function ProductDetails() {
 		fetchData();
 	}, []);
 
+	const dispatch = useDispatch();
+
+	const onAddToCartClicked = () => {
+		if (bookData) {
+			dispatch(
+				cartItemAdded({
+					cartItemId: bookData.id,
+					name: bookData.title,
+					price: '10.99',
+					quantity: 1
+				})
+			);
+		}
+	}
+
 	return (
 		<React.Fragment>
 			<CssBaseline />
@@ -63,7 +80,7 @@ function ProductDetails() {
 							</Grid>
 						</Grid>
 					) : (
-						<Paper>
+						<Paper key={bookData.id}>
 							<Grid container justify="center" spacing={2}>
 								<Grid item xs={12} md={6}>
 									<Grid container justify="center">
@@ -82,7 +99,7 @@ function ProductDetails() {
 										</Typography>
 									</Grid>
 									<Grid item xs={12}>
-										<Button variant="contained" color="primary" size="large">Add to Cart</Button>
+										<AddToCart variant="contained" color="primary" size="small" onClick={onAddToCartClicked} />
 									</Grid>
 								</Grid>
 							</Grid>

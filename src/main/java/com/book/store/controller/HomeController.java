@@ -2,8 +2,6 @@ package com.book.store.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * The BookStore application is an online bookstore built
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = "/")
+    @GetMapping(value = "/")
     public String index() {
         return "index";
     }

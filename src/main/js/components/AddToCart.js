@@ -1,10 +1,9 @@
-'use strict'
-
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 function AddToCart(props) {
     return (
-        <button type="button" className="btn btn-primary">Add to Cart</button>
+        <Button variant={props.variant} color={props.color} size={props.size} onClick={props.onClick}>Add to Cart</Button>
     );
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -137,12 +138,13 @@ function Navigation() {
             onClose={handleMobileMenuClose}
         >
             <MenuItem>
-                <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                        <ShoppingCartIcon />
-                    </Badge>
-                </IconButton>
-                <p>Cart</p>
+                <NavLink to="/cart">
+                    <IconButton aria-label="show 4 new mails" color="inherit">
+                        <Badge badgeContent={4} color="secondary">
+                            <ShoppingCartIcon />
+                        </Badge>
+                    </IconButton>
+                </NavLink>
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
@@ -153,18 +155,19 @@ function Navigation() {
                 >
                     <AccountCircle />
                 </IconButton>
-                <p>Profile</p>
             </MenuItem>
-        </Menu>
+        </Menu >
     );
 
     return (
         <div className={classes.grow}>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        Nick's Bookstore
-                    </Typography>
+                    <NavLink to="/">
+                        <Typography className={classes.title} variant="h6" noWrap>
+                            Nick's Bookstore
+                        </Typography>
+                    </NavLink>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
@@ -180,11 +183,13 @@ function Navigation() {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show 4 new shopping cart items" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <ShoppingCartIcon />
-                            </Badge>
-                        </IconButton>
+                        <NavLink to="/cart">
+                            <IconButton aria-label="show 4 new shopping cart items" color="inherit">
+                                <Badge badgeContent={4} color="secondary">
+                                    <ShoppingCartIcon />
+                                </Badge>
+                            </IconButton>
+                        </NavLink>
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
