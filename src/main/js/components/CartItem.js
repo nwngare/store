@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import RemoveFromCart from '../components/RemoveFromCart';
 import { cartItemRemoved, cartItemQuantityAdjusted } from '../features/cart/cartSlice';
 import stockImage from '../../resources/static/images/pexels-pixabay-267586.jpg';
@@ -24,29 +24,23 @@ function CartItem(props) {
     }
 
     return (
-        <Paper>
-            <Grid container justify="center" spacing={2}>
-                <Grid item xs={12} md={6}>
-                    <Grid container justify="center">
-                        <img src={stockImage} />
-                    </Grid>
-                </Grid>
-                <Grid container item alignItems="flex-start" xs={12} md={6}>
-                    <Grid item xs={12}>
-                        <Typography paragraph variant="h6">
-                            {props.cartItem.name}
-                        </Typography>
-                        <Typography>
+        <Card className="mb-3" key={props.cartItem.cartItemId}>
+            <Row>
+                <Col md={4}>
+                    <Card.Img src={stockImage} />
+                </Col>
+                <Col md={8}>
+                    <Card.Body>
+                        <Card.Title>{props.cartItem.name}</Card.Title>
+                        <Card.Text>
                             <label>Quantity: </label>
                             <input type="number" min="1" value={props.cartItem.quantity} onChange={onQuantityChanged} />
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <RemoveFromCart variant="contained" color="secondary" size="small" onClick={() => onRemoveFromCartClicked(props.cartItem.cartItemId)} />
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Paper>
+                        </Card.Text>
+                        <RemoveFromCart variant="contained" size="small" onClick={() => onRemoveFromCartClicked(props.cartItem.cartItemId)} />
+                    </Card.Body>
+                </Col>
+            </Row>
+        </Card>
     );
 }
 

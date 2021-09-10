@@ -1,27 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Typography from '@material-ui/core/Typography';
-import makeStyles from '@material-ui/styles/makeStyles';
+import Card from 'react-bootstrap/Card';
 import { cartItemAdded } from '../features/cart/cartSlice';
 import AddToCart from './AddToCart';
 import stockImage from '../../resources/static/images/pexels-pixabay-267586.jpg';
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		width: 275,
-	},
-	media: {
-		height: "150px",
-	}
-}));
-
 function BookCard(props) {
-	const classes = useStyles();
 	const primaryAuthor = props.book.authors[0].firstName + " " + props.book.authors[0].lastName;
 
 	const dispatch = useDispatch();
@@ -40,26 +25,21 @@ function BookCard(props) {
 	}
 
 	return (
-		<Card className={classes.root}>
-			<CardMedia
-				className={classes.media}
-				image={stockImage}
-				title="Stock Image"
-			/>
-			<CardContent>
-				<Typography noWrap variant="h6">
-					<Link to={{ pathname: `/productdetails/${props.book.title}` }}>
-						{props.book.title}
-					</Link>
-				</Typography>
-				<Typography paragraph>
-					by {typeof primaryAuthor !== 'undefined' ? primaryAuthor : (primaryAuthor = "No Author")}
-				</Typography>
-			</CardContent>
-			<CardActions>
-				<AddToCart variant="contained" color="primary" size="small" onClick={onAddToCartClicked} />
-			</CardActions>
-		</Card>
+
+<Card style={{ width: '14rem', height: '16rem' }}>
+<Card.Img variant="top" src={stockImage} />
+<Card.Body>
+  <Card.Title className="fs-6 text-truncate">
+	  <Link to={{ pathname: `/productdetails/${props.book.title}` }}>
+		  {props.book.title}
+	  </Link>
+  </Card.Title>
+  <Card.Text className="fs-6 text-truncate">
+  by {typeof primaryAuthor !== 'undefined' ? primaryAuthor : (primaryAuthor = "No Author")}
+  </Card.Text>
+  <AddToCart variant="primary" size="small" onClick={onAddToCartClicked} />
+</Card.Body>
+</Card>
 	);
 }
 
