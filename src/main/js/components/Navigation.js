@@ -22,9 +22,6 @@ function Navigation() {
                   <LinkContainer to="/cart">
                     <Nav.Link>Cart</Nav.Link>
                   </LinkContainer>
-                  <LinkContainer to="/user">
-                    <Nav.Link>Profile</Nav.Link>
-                  </LinkContainer>
               </Nav>
               <Form className="d-flex">
                   <FormControl

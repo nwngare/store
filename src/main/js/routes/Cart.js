@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllCartItems } from '../features/cart/cartSlice';
 import CartItem from '../components/CartItem';
-import Navigation from '../components/Navigation';
-import Container from 'react-bootstrap/Container';
+import Layout from '../components/layout/Layout';
 
 function Cart() {
 
@@ -15,12 +14,9 @@ function Cart() {
     ));
 
     return (
-        <React.Fragment>
-            <Navigation />
-            <Container className="mt-4 mb-4">
-                {renderedCartItems}
-            </Container>
-        </React.Fragment >
+        <Layout>
+            {renderedCartItems}
+        </Layout>
     );
 
 }

@@ -4,12 +4,11 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import AddToCart from '../components/AddToCart';
 import { cartItemAdded, cartItemRemoved } from '../features/cart/cartSlice';
-import Container from 'react-bootstrap/Container';
+import Layout from '../components/layout/Layout';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
 import Card from 'react-bootstrap/Card';
-import Navigation from '../components/Navigation';
 import stockImage from '../../resources/static/images/pexels-pixabay-267586.jpg';
 
 function ProductDetails() {
@@ -49,9 +48,7 @@ function ProductDetails() {
 	}
 
 	return (
-		<React.Fragment>
-			<Navigation />
-			<Container className="mt-4 mb-4">
+		<Layout>
                 {loading ? (
                 <Row xs="auto" className="justify-content-center">
                     <Col>
@@ -74,14 +71,13 @@ function ProductDetails() {
                                 <Card.Text>
                                     by {bookData.authors[0].firstName} {bookData.authors[0].lastName}
                                 </Card.Text>
-                                <AddToCart variant="contained" size="small" onClick={onAddToCartClicked} />
+                                <AddToCart variant="primary" size="small" onClick={onAddToCartClicked} />
                             </Card.Body>
 						</Col>
 					</Row>
 				</Card>
                 )}
-			</Container>
-		</React.Fragment >
+		</Layout>
 	);
 }
 
