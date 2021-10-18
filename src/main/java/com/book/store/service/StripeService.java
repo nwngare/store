@@ -29,10 +29,15 @@ public class StripeService {
         Stripe.apiKey = stripeSecretKey;
     }
 
+    /**
+     * method to create payment intent on Stripe backend and return client secret
+     * @param paymentIntentRequest
+     * @return clientSecret
+     */
     public ClientSecret createClientSecret(PaymentIntentRequest paymentIntentRequest) {
 
         ClientSecret clientSecret = new ClientSecret();
-
+        try {
         PaymentIntentCreateParams.Builder paramsBuilder = new PaymentIntentCreateParams.Builder()
                 .addPaymentMethodType(paymentIntentRequest.getPaymentMethodType())
                 .setCurrency(paymentIntentRequest.getCurrency())
@@ -40,10 +45,11 @@ public class StripeService {
 
         PaymentIntentCreateParams params = paramsBuilder.build();
 
-        try {
-            PaymentIntent paymentIntent = PaymentIntent.create(params);
-            clientSecret.setClientSecret(paymentIntent.getClientSecret());
-            return clientSecret;
+        PaymentIntent paymentIntent = PaymentIntent.create(params);
+        clientSecret.setClientSecret(paymentIntent.getClientSecret());
+
+        return clientSecret;
+
         } catch(StripeException se) {
             System.out.println(se);
         } catch(Exception e) {

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectAllCartItems } from '../features/cart/cartSlice';
 import CartItem from '../components/CartItem';
 import Layout from '../components/layout/Layout';
+import CheckoutButton from '../components/CheckoutButton';
 
 function Cart() {
 
@@ -16,6 +17,7 @@ function Cart() {
     return (
         <Layout>
             {renderedCartItems}
+            <CheckoutButton />
         </Layout>
     );
 

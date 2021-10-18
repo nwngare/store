@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import RemoveFromCart from '../components/RemoveFromCart';
+import RemoveFromCartButton from './RemoveFromCartButton';
 import { cartItemRemoved, cartItemQuantityAdjusted } from '../features/cart/cartSlice';
 import stockImage from '../../resources/static/images/pexels-pixabay-267586.jpg';
 
@@ -36,7 +36,7 @@ function CartItem(props) {
                             <label>Quantity: </label>
                             <input type="number" min="1" value={props.cartItem.quantity} onChange={onQuantityChanged} />
                         </Card.Text>
-                        <RemoveFromCart variant="contained" size="small" onClick={() => onRemoveFromCartClicked(props.cartItem.cartItemId)} />
+                        <RemoveFromCartButton variant="contained" size="small" onClick={() => onRemoveFromCartClicked(props.cartItem.cartItemId)} />
                     </Card.Body>
                 </Col>
             </Row>

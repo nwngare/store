@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { cartItemAdded } from '../features/cart/cartSlice';
-import AddToCart from './AddToCart';
+import AddToCartButton from './AddToCartButton';
 import stockImage from '../../resources/static/images/pexels-pixabay-267586.jpg';
 
 function BookCard(props) {
@@ -37,7 +37,7 @@ function BookCard(props) {
   <Card.Text className="fs-6 text-truncate">
   by {typeof primaryAuthor !== 'undefined' ? primaryAuthor : (primaryAuthor = "No Author")}
   </Card.Text>
-  <AddToCart variant="primary" size="small" onClick={onAddToCartClicked} />
+  <AddToCartButton variant="primary" size="small" onClick={onAddToCartClicked} />
 </Card.Body>
 </Card>
 	);

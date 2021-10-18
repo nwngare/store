@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import AddToCart from '../components/AddToCart';
-import { cartItemAdded, cartItemRemoved } from '../features/cart/cartSlice';
+import AddToCartButton from '../components/AddToCartButton';
+import { cartItemAdded } from '../features/cart/cartSlice';
 import Layout from '../components/layout/Layout';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -71,7 +71,7 @@ function ProductDetails() {
                                 <Card.Text>
                                     by {bookData.authors[0].firstName} {bookData.authors[0].lastName}
                                 </Card.Text>
-                                <AddToCart variant="primary" size="small" onClick={onAddToCartClicked} />
+                                <AddToCartButton variant="primary" size="small" onClick={onAddToCartClicked} />
                             </Card.Body>
 						</Col>
 					</Row>

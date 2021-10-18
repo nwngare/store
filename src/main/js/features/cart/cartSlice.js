@@ -35,3 +35,11 @@ export const { cartItemAdded, cartItemRemoved, cartItemQuantityAdjusted } = cart
 export default cartSlice.reducer;
 
 export const selectAllCartItems = state => state.cart.items;
+
+export const selectTotalPrice = (state) => {
+    let totalPrice = 0;
+    for (let i = 0; i < state.cart.items.length; i++) {
+        totalPrice += (state.cart.items[i].price * state.cart.items[i].quantity);
+    }
+    return totalPrice;
+};

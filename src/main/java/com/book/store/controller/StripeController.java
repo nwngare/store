@@ -22,6 +22,8 @@ public class StripeController {
     @Autowired
     private StripeService stripeService;
 
+    //TODO add a route to return the publishable key rather than hardcoding it on the frontend
+
     @PostMapping(value = "/create-payment-intent")
     @ResponseBody
     public ClientSecret createClientSecret(@RequestBody PaymentIntentRequest paymentIntentRequest) {
