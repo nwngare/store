@@ -107,7 +107,26 @@ function Checkout() {
     return (
         <Layout>
             <Row>
-                <Col>
+            <Col md={12} lg={4}>
+                    <Table bordered hover responsive>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tableRowCartItems}
+                            <tr>
+                                <td>Total:</td>
+                                <td></td>
+                                <td>{totalPrice}</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                </Col>
+                <Col md={12} lg={8}>
                     <Form onSubmit={handleSubmit}>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGroupFirstName">
@@ -146,25 +165,6 @@ function Checkout() {
                         </Form.Group>
                         <Button variant="primary" type="submit">Submit</Button>
                     </Form>
-                </Col>
-                <Col>
-                    <Table bordered hover>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tableRowCartItems}
-                            <tr>
-                                <td>Total:</td>
-                                <td></td>
-                                <td>{totalPrice}</td>
-                            </tr>
-                        </tbody>
-                    </Table>
                 </Col>
             </Row>
         </Layout>

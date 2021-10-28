@@ -23,4 +23,16 @@ public class PaymentIntentRequest {
     public Long getAmount() {
         return amount;
     }
+
+    public void setPaymentMethodType(String paymentMethodType) {
+        this.paymentMethodType = paymentMethodType;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
 }

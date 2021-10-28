@@ -44,6 +44,13 @@
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 
+		<!--JUnit dependency-->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.8.1</version>
+		</dependency>
+
 		<!--Postgres dependency-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
