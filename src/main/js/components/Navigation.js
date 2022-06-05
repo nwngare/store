@@ -24,6 +24,12 @@ function Navigation() {
                   </LinkContainer>
               </Nav>
               <Form className="d-flex">
+                  <FormControl as="select">
+                    <option>Title</option>
+                    <option>Author</option>
+                    <option>Genre</option>
+                  </FormControl>
+
                   <FormControl
                   type="search"
                   placeholder="Search"

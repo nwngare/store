@@ -1,6 +1,7 @@
 package com.book.store.repository;
 
 import com.book.store.entity.Genre;
+import com.book.store.entity.GenreExcerpt;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -14,7 +15,7 @@ import java.util.List;
  * @author Nicholas Ngare
  * @version 1.0.0
  */
-@RepositoryRestResource(collectionResourceRel = "genres", path = "genres")
+@RepositoryRestResource(excerptProjection = GenreExcerpt.class)
 public interface GenreRepository extends PagingAndSortingRepository<Genre, Long> {
 
     // Query methods using property expressions

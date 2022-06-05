@@ -131,33 +131,33 @@ function Checkout() {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGroupFirstName">
                                 <Form.Label>First Name</Form.Label>
-                                <Form.Control type="text" value={values.firstName} name="firstName" onChange={handleInputChange} placeholder="First Name" />
+                                <Form.Control type="text" value={values.firstName} name="firstName" onChange={handleInputChange} placeholder="First Name" required />
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGroupLastName">
                                 <Form.Label>Last Name</Form.Label>
-                                <Form.Control type="text" value={values.lastName} name="lastName" onChange={handleInputChange} placeholder="Last Name" />
+                                <Form.Control type="text" value={values.lastName} name="lastName" onChange={handleInputChange} placeholder="Last Name" required />
                             </Form.Group>
                         </Row>
                         <Form.Group className="mb-3" controlId="formGroupEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" value={values.email} name="email" onChange={handleInputChange} placeholder="Email" />
+                            <Form.Control type="email" value={values.email} name="email" onChange={handleInputChange} placeholder="Email" required />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formGroupAddress">
                             <Form.Label>Street Address</Form.Label>
-                            <Form.Control type="text" value={values.streetAddress} name="streetAddress" onChange={handleInputChange} placeholder="Street Address" />
+                            <Form.Control type="text" value={values.streetAddress} name="streetAddress" onChange={handleInputChange} placeholder="Street Address" required />
                         </Form.Group>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGroupCity">
                                 <Form.Label>City</Form.Label>
-                                <Form.Control type="text" value={values.city} name="city" onChange={handleInputChange} placeholder="City" />
+                                <Form.Control type="text" value={values.city} name="city" onChange={handleInputChange} placeholder="City" required />
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGroupState">
                                 <Form.Label>State</Form.Label>
-                                <Form.Control type="text" value={values.state} name="state" onChange={handleInputChange} placeholder="State" />
+                                <Form.Control type="text" value={values.state} name="state" onChange={handleInputChange} placeholder="State" required />
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGroupZipCode">
                                 <Form.Label>Zip Code</Form.Label>
-                                <Form.Control type="text" value={values.zipCode} name="zipCode" onChange={handleInputChange} placeholder="Zip Code" />
+                                <Form.Control type="text" value={values.zipCode} name="zipCode" pattern="(\d{5}([\-]\d{4})?)" onChange={handleInputChange} placeholder="Zip Code" required />
                             </Form.Group>
                         </Row>
                         <Form.Group className="mb-3" controlId="formGroupPayment">

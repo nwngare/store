@@ -10,17 +10,16 @@ import Layout from '../components/Layout/Layout';
 
 function Home() {
   const [books, setBooks] = useState([]);
+  const [genres, setGenres] = useState([]);
   const [navLinks, setNavLinks] = useState({});
   const [totalPages, setTotalPages] = useState(0);
   const [activePage, setActivePage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
-  /**
-   * Load the page content with an HTTP GET request to the backend rest api
-   */
+  // Load products for the home page with an HTTP GET request to the backend rest api
   useEffect(() => {
-    const fetchData = () => {
+    const fetchBookData = () => {
       axios
         .get("/api/books?size=16")
         .then((response) => {
@@ -34,12 +33,26 @@ function Home() {
           setError(error);
         });
     };
-    fetchData();
+    fetchBookData();
   }, []);
 
-  /**
-   * Update the page content with the previous or next page links provided by the rest api
-   */
+  // Load the book genres with an HTTP GET request to the backend rest api
+  useEffect(() => {
+    const fetchGenreData = () => {
+      axios
+        .get("/api/genres")
+        .then((response) => {
+          setGenres(response.data._embedded.genres);
+        })
+        .catch((error) => {
+          // handle error
+          setError(error);
+        });
+    };
+    fetchGenreData();
+  }, []);
+
+  // Update the page content with the previous or next page links provided by the rest api
   function onNavigate(uri) {
     setLoading(true);
     axios
@@ -68,9 +81,17 @@ function Home() {
 
   // Create a grid of cards to display product details
   const bookCards = books.map((book) => (
-    <Col key={book._links.self.href}>
+    <Col key={book._links.self.href} className="mb-4">
       <BookCard key={book.id} book={book} />
     </Col>
+  ));
+  // const bookCards = books.map((book) => (
+  //   <BookCard key={book.id} book={book} />
+  // ));
+
+  // Create a list of Genres to display in the aside
+  const genreLinks = genres.map((genre) => (
+    <li key={genre.id}>{genre.genre}</li>
   ));
 
   /**
@@ -108,7 +129,19 @@ function Home() {
         </Row>
       ) : (
         <Row xs="auto" className="justify-content-center g-4 mb-4">
-          {bookCards}
+          <Col sm={2}>
+            <aside>
+              <h2>Genres</h2>
+              <ul>
+                {genreLinks}
+              </ul>
+            </aside>
+          </Col>
+          <Col sm={10}>
+            <Row className="row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-4">
+              {bookCards}
+            </Row>
+          </Col>
         </Row>
       )}
       <Row xs="auto" className="justify-content-center">
