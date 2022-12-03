@@ -2,10 +2,14 @@ package com.book.store.repository;
 
 import com.book.store.entity.Book;
 import com.book.store.entity.BookExcerpt;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.util.List;
@@ -30,5 +34,7 @@ public interface BookRepository extends PagingAndSortingRepository<Book, Long> {
     @RestResource(path = "title", rel = "title")
     BookExcerpt findByTitle(@Param("title") String title);
 
+//    @Query("SELECT b.id AS id, b.title AS title, b.rating AS rating, b.authors AS authors, b.genres AS genres FROM Books b where ")
+    Page<Book> findByGenresId(Long Id, Pageable page);
 
 }

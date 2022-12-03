@@ -3,6 +3,7 @@ package com.book.store.entity;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -43,7 +44,7 @@ public class Author {
     private String lastName;
 
     @ManyToMany(mappedBy = "authors")
-    Set<Book> books;
+    private Set<Book> books = new HashSet<>();
 
     protected Author() {}
 

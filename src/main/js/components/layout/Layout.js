@@ -6,7 +6,7 @@ function Layout({ children }) {
     return (
         <React.Fragment>
             <Navigation />
-            <Container className="mt-4 mb-4">
+            <Container className="my-4">
                 {children}
             </Container>
             <footer style={{ textAlign: 'center' }}>

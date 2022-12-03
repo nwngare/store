@@ -2,6 +2,7 @@ package com.book.store.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -37,7 +38,7 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id")
     )
-    Set<Author> authors;
+    private Set<Author> authors = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -45,7 +46,7 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
-    Set<Genre> genres;
+    private Set<Genre> genres = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(

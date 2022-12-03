@@ -26,7 +26,7 @@ function BookCard(props) {
 
 	return (
 
-<Card style={{ width: '14rem', height: '16rem' }}>
+<Card className="mx-auto" style={{ width: '14rem', height: '16rem' }}>
 <Card.Img variant="top" src={stockImage} />
 <Card.Body>
   <Card.Title className="fs-6 text-truncate">

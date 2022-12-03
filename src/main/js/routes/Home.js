@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
@@ -69,6 +70,10 @@ function Home() {
       });
   }
 
+  function getBooksByGenre(uri) {
+    onNavigate(uri);
+  }
+
   function prevPage(e) {
     e.preventDefault();
     onNavigate(navLinks.prev.href);
@@ -91,7 +96,9 @@ function Home() {
 
   // Create a list of Genres to display in the aside
   const genreLinks = genres.map((genre) => (
-    <li key={genre.id}>{genre.genre}</li>
+    <li>
+      <a key={genre.id} href="#" onClick={() => getBooksByGenre("http://localhost:8080/api/books/search/findByGenresId?Id=" + genre.id + "&size=16")}>{genre.genre}</a>
+    </li>
   ));
 
   /**
@@ -128,21 +135,21 @@ function Home() {
           </Col>
         </Row>
       ) : (
-        <Row xs="auto" className="justify-content-center g-4 mb-4">
-          <Col sm={2}>
-            <aside>
+        <Container className="d-flex">
+          <Row xs="auto">
+            <Col sm={12} md={3}>
               <h2>Genres</h2>
               <ul>
                 {genreLinks}
               </ul>
-            </aside>
-          </Col>
-          <Col sm={10}>
-            <Row className="row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-4">
-              {bookCards}
-            </Row>
-          </Col>
-        </Row>
+            </Col>
+            <Col sm={12} md={9}>
+              <Row sm={1} md={2} lg={4} className="g-4">
+                {bookCards}
+              </Row>
+            </Col>
+          </Row>
+        </Container>
       )}
       <Row xs="auto" className="justify-content-center">
         <Col>
